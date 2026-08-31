@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Processing Client-Server Demo</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/config.js" defer></script>
+  <script src="js/app.js" defer></script>
+</head>
+<body>
+  <main class="app-shell">
+    <header class="hero">
+      <p class="eyebrow">University Demo</p>
+      <h1>Image Processing Client-Server</h1>
+      <p class="hero-text">
+        Static Frontend for uploading one image to a FastAPI + OpenCV Backend and downloading the processed result.
+      </p>
+    </header>
+
+    <section class="card status-card" aria-labelledby="backend-title">
+      <div>
+        <p class="section-label">Backend Status</p>
+        <h2 id="backend-title">
+          <span id="backendIndicator" class="status-dot status-checking" aria-hidden="true"></span>
+          <span id="backendStatusText">Checking Backend...</span>
+        </h2>
+        <p id="backendStatusDetail" class="muted">Checking server health.</p>
+        <p class="api-url">API Base URL: <code id="apiUrlText">Loading config...</code></p>
+      </div>
+      <button id="checkBackendButton" type="button" class="secondary-button">Retry / Check Again</button>
+    </section>
+
+    <section class="card" aria-labelledby="upload-title">
+      <div class="section-heading">
+        <div>
+          <p class="section-label">Step 1</p>
+          <h2 id="upload-title">Choose Image</h2>
+        </div>
+        <span class="file-hint">JPG, JPEG, PNG, WEBP</span>
+      </div>
+
+      <label id="uploadArea" class="upload-area" for="imageInput">
+        <input id="imageInput" type="file" accept="image/jpeg,image/png,image/webp">
+        <span class="upload-icon" aria-hidden="true">⬆</span>
+        <strong>Click to choose an image</strong>
+        <span>or drag and drop a file here</span>
+      </label>
+      <p id="selectedFileInfo" class="muted">No image selected.</p>
+    </section>
+
+    <section class="image-grid" aria-label="Image preview and result">
+      <article class="card image-card">
+        <div class="section-heading">
+          <div>
+            <p class="section-label">Step 2</p>
+            <h2>Original Image</h2>
+          </div>
+        </div>
+        <div class="image-frame">
+          <p id="originalPlaceholder" class="placeholder">Preview will appear after choosing an image.</p>
+          <img id="originalPreview" alt="Original selected image preview" hidden>
+        </div>
+      </article>
+
+      <article class="card image-card">
+        <div class="section-heading">
+          <div>
+            <p class="section-label">Step 4</p>
+            <h2>Processed Image</h2>
+          </div>
+        </div>
+        <div class="image-frame">
+          <p id="processedPlaceholder" class="placeholder">Processed image will appear here.</p>
+          <img id="processedPreview" alt="Processed image result" hidden>
+        </div>
+      </article>
+    </section>
+
+    <section class="card actions-card" aria-labelledby="process-title">
+      <div>
+        <p class="section-label">Step 3</p>
+        <h2 id="process-title">Process Image</h2>
+        <p id="workflowStatus" class="workflow-status">Ready</p>
+        <p id="workflowDetail" class="muted">Choose an image to start.</p>
+      </div>
+
+      <div id="progressWrap" class="progress-wrap" hidden>
+        <div class="progress-track" aria-hidden="true">
+          <div id="progressBar" class="progress-bar"></div>
+        </div>
+        <span id="progressText">0%</span>
+      </div>
+
+      <div id="errorBox" class="error-box" role="alert" hidden></div>
+
+      <div class="button-row">
+        <button id="processButton" type="button" class="primary-button" disabled>Process Image</button>
+        <button id="downloadButton" type="button" class="secondary-button" disabled>Download Result</button>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

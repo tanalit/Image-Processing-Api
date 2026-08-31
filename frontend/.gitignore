@@ -1,0 +1,21 @@
+# Local config / secrets
+.env
+.env.*
+
+# Python local files used only while serving/testing
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Logs and temporary files
+*.log
+*.tmp
+*.temp
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor folders are optional and not required to run this project
+.vscode/
+.idea/
